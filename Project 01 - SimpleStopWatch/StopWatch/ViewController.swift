@@ -12,7 +12,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var pauseBtn: UIButton!
-    
+    @IBOutlet weak var timeLabel: UILabel!
+
     var Counter = 0.0
     var timer = Timer()
     var IsPlaying = false
@@ -28,8 +29,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBAction func resetButtonDidTouch(sender: AnyObject) {
+    // 方法签名前面的"_"也是方法的一部分，必须和StoryBoard的一致否则无法调用，会报错误，导致点击事件无法执行
+    // unrecognized selector sent to instance 0x7fc029703f50
+    @IBAction func resetButtonDidTouch(_ sender: Any) {
         timer.invalidate()
         IsPlaying = false
         Counter = 0
@@ -38,7 +40,7 @@ class ViewController: UIViewController {
         pauseBtn.isEnabled = true
     }
     
-    @IBAction func playButtonDidTouch(sender: AnyObject) {
+    @IBAction func playButtonDidTouch(_ sender: Any) {
         if(IsPlaying) {
             return
         }
@@ -48,7 +50,7 @@ class ViewController: UIViewController {
         IsPlaying = true
     }
     
-    @IBAction func pauseButtonDidTouch(sender: AnyObject) {
+    @IBAction func pauseButtonDidTouch(_ sender: Any) {
         
         playBtn.isEnabled = true
         pauseBtn.isEnabled = false
